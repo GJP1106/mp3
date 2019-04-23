@@ -3,8 +3,8 @@
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
-BIN = mp3
-all:$(BIN) $(DEPS)
+BIN =  
+all:$(DEPS) $(BIN) $(OBJS)
 ifneq ("$(wildcard $(DEPS))","")
 include $(DEPS)
 endif
