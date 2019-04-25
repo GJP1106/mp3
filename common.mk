@@ -7,8 +7,11 @@ BIN := $(addprefix /home/gjp/mp3/,$(BIN))
 
 LINK_OBJ_DIR = /home/gjp/mp3/app/link_obj
 $(shell mkdir -p $(LINK_OBJ_DIR))
+DEP_DIR = /home/gjp/mp3/app/dep
+$(shell mkdir -p $(DEP_DIR))
 
 OBJS := $(addprefix $(LINK_OBJ_DIR)/,$(OBJS))
+DEPS := $(addprefix $(DEP_DIR)/,$(DEPS))
 
 LINK_OBJ = $(wildcard $(LINK_OBJ_DIR)/*.o)
 LINK_OBJ +=$(OBJS)
@@ -22,7 +25,7 @@ $(BIN):$(LINK_OBJ)
 $(LINK_OBJ_DIR)/%.o:%.c
 	gcc -o $@ -c $(filter %.c,$^)
 
-%.d:%.c
+$(DEP_DIR)/%.d:%.c
 	gcc -MM $^ | sed 's,\(.*\).o[ :]*,$(LINK_OBJ_DIR)/\1.o:,g'> $@
 
 clean:
