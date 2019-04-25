@@ -1,4 +1,5 @@
 .PHONY:all
+export BUILD_ROOT = $(shell pwd)
 
 all:
 	make -C lcd

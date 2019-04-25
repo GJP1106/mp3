@@ -1,4 +1,4 @@
 
 BIN = 
 
-include ../common.mk
+include $(BUILD_ROOT)/common.mk

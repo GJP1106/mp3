@@ -3,11 +3,11 @@
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
-BIN := $(addprefix /home/gjp/mp3/,$(BIN))
+BIN := $(addprefix $(BUILD_ROOT)/,$(BIN))
 
-LINK_OBJ_DIR = /home/gjp/mp3/app/link_obj
+LINK_OBJ_DIR = $(BUILD_ROOT)/app/link_obj
 $(shell mkdir -p $(LINK_OBJ_DIR))
-DEP_DIR = /home/gjp/mp3/app/dep
+DEP_DIR = $(BUILD_ROOT)/app/dep
 $(shell mkdir -p $(DEP_DIR))
 
 OBJS := $(addprefix $(LINK_OBJ_DIR)/,$(OBJS))
@@ -26,7 +26,7 @@ $(LINK_OBJ_DIR)/%.o:%.c
 	gcc -o $@ -c $(filter %.c,$^)
 
 $(DEP_DIR)/%.d:%.c
-	gcc -MM $^ | sed 's,\(.*\).o[ :]*,$(LINK_OBJ_DIR)/\1.o:,g'> $@
+	gcc -MM $(filter %.c,$^) | sed 's,\(.*\).o[ :]*,$(LINK_OBJ_DIR)/\1.o $@:,g'> $@
 
 clean:
 	rm -f $(BIN) $(OBJS) $(DEPS)
