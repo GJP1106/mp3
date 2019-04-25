@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#include "../lcd/lcd.h"
-#include "../usb/usb.h"
-#include "../media/media.h"
+#include "lcd.h"
+#include "usb.h"
+#include "media.h"
 int main() {
 	printf("MP3 player init....\n");
 	lcd_init();

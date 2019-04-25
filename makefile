@@ -1,6 +1,6 @@
 .PHONY:all
 export BUILD_ROOT = $(shell pwd)
-
+export HEAD_PATH = $(BUILD_ROOT)/inc
 all:
 	make -C lcd
 	make -C usb
@@ -8,4 +8,4 @@ all:
 	make -C app
 
 clean:
-	rm -fr app/link_obj app/dep mp3
+	rm -fr app/link_obj app/dep mp3 app/*.d
