@@ -6,6 +6,7 @@ all:
 	make -C usb
 	make -C media
 	make -C app
+	make -C math
 
 clean:
 	rm -fr app/link_obj app/dep mp3 app/*.d app/lib_obj
