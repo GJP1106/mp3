@@ -8,4 +8,5 @@ all:
 	make -C app
 
 clean:
-	rm -fr app/link_obj app/dep mp3 app/*.d
+	rm -fr app/link_obj app/dep mp3 app/*.d app/lib_obj
+	rm -rf lib/*.a
